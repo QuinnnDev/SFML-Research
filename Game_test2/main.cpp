@@ -1,5 +1,7 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include "gameFunctions.h"
+#include "Camera.h"
 
 
 int main()
@@ -7,25 +9,23 @@ int main()
     ///precalculos
 
 
-
     ///ventana de juego
 
-    sf::RenderWindow window(sf::VideoMode(1080, 720), "SFML TAB", sf::Style::Close | sf::Style::Titlebar);
+    sf::RenderWindow window(sf::VideoMode(1200, 900), "SFML TAB");
 
 
     ///inicializar sistemas
     sf::Event evento;
 
-    sf::Clock reloj;
+    sf::Clock deltaClock;
+
+    Camera camara(0.05);
 
     window.setFramerateLimit(75);
 
     ///inicializar entidades
 
-    sf::RectangleShape rectangle(sf::Vector2f(128.0f, 128.0f));
-    rectangle.setOrigin(rectangle.getSize().x / 2, rectangle.getSize().y / 2);
-    rectangle.setFillColor(sf::Color::White);
-    rectangle.setPosition(window.getSize().x/2, window.getSize().y/2);
+    Begin(window);
 
     ///fondo
 
@@ -36,7 +36,8 @@ int main()
     
     while(window.isOpen())
     {
-        i++;
+        float deltaTime = deltaClock.restart().asSeconds();
+        
 
 
         while(window.pollEvent(evento))
@@ -46,18 +47,22 @@ int main()
                 window.close();
                 }
 
-
         }
 
+        window.setView(camara.getView(window.getSize()));
+
+        Update(deltaTime);
 
         window.clear(sf::Color::Color(i,i,i,255));
 
-        window.draw(rectangle); // Render our shape.
+        ///draw
+
+        Render(window);
 
 
         window.display();
 
-        std::cout<<reloj.getElapsedTime().asMilliseconds()<<std::endl;
+        std::cout<<deltaClock.getElapsedTime().asMilliseconds()<<std::endl;
 
 
     }

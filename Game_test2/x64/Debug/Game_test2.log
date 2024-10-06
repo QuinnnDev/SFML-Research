@@ -1,13 +1,38 @@
 ﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: El directorio intermedio (x64\Debug\) contiene archivos compartidos de otro proyecto (Game_test2.vcxproj). Esto puede dar lugar a un comportamiento incorrecto de limpieza y recompilación.
-  main.cpp
-C:\Users\Quinn\Downloads\Programacion legit\A repos con permisos\SFML-Research\Game_test2\main.cpp(28,67): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
-C:\Users\Quinn\Downloads\Programacion legit\A repos con permisos\SFML-Research\Game_test2\main.cpp(28,67): warning C4244:         with
-C:\Users\Quinn\Downloads\Programacion legit\A repos con permisos\SFML-Research\Game_test2\main.cpp(28,67): warning C4244:         [
-C:\Users\Quinn\Downloads\Programacion legit\A repos con permisos\SFML-Research\Game_test2\main.cpp(28,67): warning C4244:             T=unsigned int
-C:\Users\Quinn\Downloads\Programacion legit\A repos con permisos\SFML-Research\Game_test2\main.cpp(28,67): warning C4244:         ]
-C:\Users\Quinn\Downloads\Programacion legit\A repos con permisos\SFML-Research\Game_test2\main.cpp(28,45): warning C4244: 'argumento': conversión de 'T' a 'float'; posible pérdida de datos
-C:\Users\Quinn\Downloads\Programacion legit\A repos con permisos\SFML-Research\Game_test2\main.cpp(28,45): warning C4244:         with
-C:\Users\Quinn\Downloads\Programacion legit\A repos con permisos\SFML-Research\Game_test2\main.cpp(28,45): warning C4244:         [
-C:\Users\Quinn\Downloads\Programacion legit\A repos con permisos\SFML-Research\Game_test2\main.cpp(28,45): warning C4244:             T=unsigned int
-C:\Users\Quinn\Downloads\Programacion legit\A repos con permisos\SFML-Research\Game_test2\main.cpp(28,45): warning C4244:         ]
-  Game_test2.vcxproj -> C:\Users\Quinn\Downloads\Programacion legit\A repos con permisos\SFML-Research\x64\Debug\SFML-study.exe
+  Camera.cpp
+C:\Users\Quinn\Downloads\Programacion legit\A repos con permisos\SFML-Research\Game_test2\Camera.cpp(10,29): error C2678: '/' binario: no se encontró un operador que adopte un operando en la parte izquierda de tipo 'sf::Vector2f' (o bien no existe una conversión aceptable)
+      C:\Users\Quinn\Downloads\Programacion legit\A repos con permisos\SFML-Research\External\SFML\include\SFML\System\Time.hpp(364,22):
+      puede ser 'sf::Time sf::operator /(sf::Time,float)' [se encontró con la búsqueda dependiente de argumentos]
+          C:\Users\Quinn\Downloads\Programacion legit\A repos con permisos\SFML-Research\Game_test2\Camera.cpp(10,29):
+          'sf::Time sf::operator /(sf::Time,float)': el argumento 1 no puede convertirse de 'sf::Vector2f' a 'sf::Time'
+              C:\Users\Quinn\Downloads\Programacion legit\A repos con permisos\SFML-Research\Game_test2\Camera.cpp(10,29):
+              No hay disponible ningún operador de conversión definido por el usuario que pueda realizar esta conversión, o bien no se puede llamar al operador
+      C:\Users\Quinn\Downloads\Programacion legit\A repos con permisos\SFML-Research\External\SFML\include\SFML\System\Time.hpp(376,22):
+      o       'sf::Time sf::operator /(sf::Time,sf::Int64)' [se encontró con la búsqueda dependiente de argumentos]
+          C:\Users\Quinn\Downloads\Programacion legit\A repos con permisos\SFML-Research\Game_test2\Camera.cpp(10,29):
+          'sf::Time sf::operator /(sf::Time,sf::Int64)': el argumento 1 no puede convertirse de 'sf::Vector2f' a 'sf::Time'
+              C:\Users\Quinn\Downloads\Programacion legit\A repos con permisos\SFML-Research\Game_test2\Camera.cpp(10,29):
+              No hay disponible ningún operador de conversión definido por el usuario que pueda realizar esta conversión, o bien no se puede llamar al operador
+      C:\Users\Quinn\Downloads\Programacion legit\A repos con permisos\SFML-Research\External\SFML\include\SFML\System\Time.hpp(412,23):
+      o       'float sf::operator /(sf::Time,sf::Time)' [se encontró con la búsqueda dependiente de argumentos]
+          C:\Users\Quinn\Downloads\Programacion legit\A repos con permisos\SFML-Research\Game_test2\Camera.cpp(10,29):
+          'float sf::operator /(sf::Time,sf::Time)': el argumento 1 no puede convertirse de 'sf::Vector2f' a 'sf::Time'
+              C:\Users\Quinn\Downloads\Programacion legit\A repos con permisos\SFML-Research\Game_test2\Camera.cpp(10,29):
+              No hay disponible ningún operador de conversión definido por el usuario que pueda realizar esta conversión, o bien no se puede llamar al operador
+      C:\Users\Quinn\Downloads\Programacion legit\A repos con permisos\SFML-Research\External\SFML\include\SFML\System\Vector2.hpp(202,12):
+      o       'sf::Vector2<T> sf::operator /(const sf::Vector2<T> &,T)'
+          C:\Users\Quinn\Downloads\Programacion legit\A repos con permisos\SFML-Research\Game_test2\Camera.cpp(10,29):
+          "sf::Vector2<T> sf::operator /(const sf::Vector2<T> &,T)": el parámetro de plantilla "T" es ambiguo
+              C:\Users\Quinn\Downloads\Programacion legit\A repos con permisos\SFML-Research\Game_test2\Camera.cpp(10,29):
+              puede ser 'int'
+              C:\Users\Quinn\Downloads\Programacion legit\A repos con permisos\SFML-Research\Game_test2\Camera.cpp(10,29):
+              o       'float'
+          C:\Users\Quinn\Downloads\Programacion legit\A repos con permisos\SFML-Research\Game_test2\Camera.cpp(10,29):
+          "sf::Vector2<T> sf::operator /(const sf::Vector2<T> &,T)": no se pudo deducir el argumento plantilla para "T" de "int"
+      C:\Users\Quinn\Downloads\Programacion legit\A repos con permisos\SFML-Research\External\SFML\include\SFML\System\Vector3.hpp(204,12):
+      o       'sf::Vector3<T> sf::operator /(const sf::Vector3<T> &,T)'
+          C:\Users\Quinn\Downloads\Programacion legit\A repos con permisos\SFML-Research\Game_test2\Camera.cpp(10,29):
+          "sf::Vector3<T> sf::operator /(const sf::Vector3<T> &,T)": no se pudo deducir el argumento plantilla para "const sf::Vector3<T> &" de "sf::Vector2f"
+      C:\Users\Quinn\Downloads\Programacion legit\A repos con permisos\SFML-Research\Game_test2\Camera.cpp(10,29):
+      al hacer coincidir la lista de argumentos '(sf::Vector2f, int)'
+  
