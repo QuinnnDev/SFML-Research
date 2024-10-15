@@ -1,14 +1,15 @@
 
 #include "gameFunctions.h"
 
-sf::CircleShape circle(2.0f, 360);
+sf::Texture textu;
+
+
 
 void Begin(const sf::Window& window)
 {
-	circle.setOrigin(sf::Vector2f(circle.getRadius(), circle.getRadius() ));
-	//circle.setPosition(sf::Vector2f(window.getSize().x / 2, window.getSize().y / 2));
-	circle.setFillColor(sf::Color::Yellow);
-	//circle.setPointCount(60);
+	if (!textu.loadFromFile("Assets/suspiciousBrick.png")) {
+		exit(-1);
+	}
 
 }
 
@@ -18,8 +19,8 @@ void Update(float deltaTime)
 
 }
 
-void Render(sf::RenderWindow& window)
+void Render(Renderer& renderer)
 {
-	window.draw(circle);
+	renderer.Draw(textu, sf::Vector2f(0.0f, 0.0f), sf::Vector2f(2.0f, 2.0f));
 
 }

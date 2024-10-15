@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "gameFunctions.h"
 #include "Camera.h"
+#include "Renderer.h"
 
 
 int main()
@@ -11,7 +12,7 @@ int main()
 
     ///ventana de juego
 
-    sf::RenderWindow window(sf::VideoMode(1200, 900), "SFML TAB");
+    sf::RenderWindow window(sf::VideoMode(1200, 900), "PORNO FURRY");
 
 
     ///inicializar sistemas
@@ -19,7 +20,9 @@ int main()
 
     sf::Clock deltaClock;
 
-    Camera camara(0.05);
+    Camera camara(5.0f);
+
+    Renderer renderer(window);
 
     window.setFramerateLimit(75);
 
@@ -27,12 +30,14 @@ int main()
 
     Begin(window);
 
+
+
     ///fondo
 
 
     ///BUCLE DE JUEGO
 
-    int i = 0;
+    int i = 70;
     
     while(window.isOpen())
     {
@@ -46,10 +51,11 @@ int main()
                 {
                 window.close();
                 }
+            
 
         }
 
-        window.setView(camara.getView(window.getSize()));
+        window.setView(camara.getView(window.getSize(),sf::Vector2f(0,0) ) );
 
         Update(deltaTime);
 
@@ -57,7 +63,7 @@ int main()
 
         ///draw
 
-        Render(window);
+        Render(renderer);
 
 
         window.display();

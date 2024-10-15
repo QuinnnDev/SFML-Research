@@ -8,7 +8,7 @@ class Camera
 public:
 	Camera(float zoomLevel = 5.0f);
 
-	sf::View getView(sf::Vector2u windowSize);
+	sf::View getView(sf::Vector2u windowSize, sf::Vector2f target);
 
 private:
 	float zoomLevel;

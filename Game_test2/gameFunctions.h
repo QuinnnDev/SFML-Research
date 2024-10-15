@@ -4,13 +4,14 @@
 #define GAMEFUNCTIONS_H
 
 #include "SFML/Graphics.hpp"
+#include "Renderer.h"
 
 
 void Begin(const sf::Window& window);
 
 void Update(float deltaTime);
 
-void Render(sf::RenderWindow& window);
+void Render(Renderer& renderer);
 
 
 
