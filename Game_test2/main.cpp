@@ -3,6 +3,7 @@
 #include "gameFunctions.h"
 #include "Camera.h"
 #include "Renderer.h"
+#include "Resources.h"
 
 
 int main()
@@ -22,13 +23,15 @@ int main()
 
     Camera camara(5.0f);
 
+    Resources resources;
+
     Renderer renderer(window);
 
     window.setFramerateLimit(75);
 
     ///inicializar entidades
 
-    Begin(window);
+    Begin(window, resources);
 
 
 
@@ -63,7 +66,7 @@ int main()
 
         ///draw
 
-        Render(renderer);
+        Render(renderer, resources);
 
 
         window.display();

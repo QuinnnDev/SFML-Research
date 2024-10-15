@@ -5,13 +5,14 @@
 
 #include "SFML/Graphics.hpp"
 #include "Renderer.h"
+#include "Resources.h"
 
 
-void Begin(const sf::Window& window);
+void Begin(const sf::Window& window, Resources resources);
 
 void Update(float deltaTime);
 
-void Render(Renderer& renderer);
+void Render(Renderer& renderer, Resources resources);
 
 
 
