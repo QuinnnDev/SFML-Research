@@ -4,5 +4,5 @@ C:\Users\Quinn\Downloads\Programacion legit\A repos con permisos\SFML-Research\G
   (compilando archivo de origen "Resources.cpp")
   
 C:\Users\Quinn\Downloads\Programacion legit\A repos con permisos\SFML-Research\Game_test2\Resources.cpp(30,11): warning C4267: 'inicializando': conversión de 'size_t' a 'int'; posible pérdida de datos
-C:\Users\Quinn\Downloads\Programacion legit\A repos con permisos\SFML-Research\Game_test2\Resources.cpp(66,25): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
+C:\Users\Quinn\Downloads\Programacion legit\A repos con permisos\SFML-Research\Game_test2\Resources.cpp(65,25): warning C4267: 'return': conversión de 'size_t' a 'int'; posible pérdida de datos
   Game_test2.vcxproj -> C:\Users\Quinn\Downloads\Programacion legit\A repos con permisos\SFML-Research\x64\Debug\SFML-study.exe

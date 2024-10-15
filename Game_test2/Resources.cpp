@@ -28,7 +28,6 @@ bool Resources::addElement(std::string path)
 int Resources::getPosition(std::string path)
 {
 	int size = texturePath.size();
-	std::cout <<" b " << path << std::endl;
 
 	for (int i = 0; i < size; i++) 
 	{
