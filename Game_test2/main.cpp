@@ -27,7 +27,7 @@ int main()
 
     Renderer renderer(window);
 
-    //window.setFramerateLimit(75);
+    window.setFramerateLimit(75);
 
     ///inicializar entidades
 

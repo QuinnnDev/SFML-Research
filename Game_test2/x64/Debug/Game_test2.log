@@ -1,6 +1,11 @@
 ﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(531,5): warning MSB8028: El directorio intermedio (x64\Debug\) contiene archivos compartidos de otro proyecto (Game_test2.vcxproj). Esto puede dar lugar a un comportamiento incorrecto de limpieza y recompilación.
+  Map.cpp
+C:\Users\Quinn\Downloads\Programacion legit\A repos con permisos\SFML-Research\Game_test2\Resources.h(8,14): warning C4091: 'static ': se ha omitido a la izquierda de 'Resources' cuando no hay ninguna variable declarada
+  (compilando archivo de origen "Map.cpp")
+  
   main.cpp
 C:\Users\Quinn\Downloads\Programacion legit\A repos con permisos\SFML-Research\Game_test2\Resources.h(8,14): warning C4091: 'static ': se ha omitido a la izquierda de 'Resources' cuando no hay ninguna variable declarada
   (compilando archivo de origen "main.cpp")
   
+  Generando código...
   Game_test2.vcxproj -> C:\Users\Quinn\Downloads\Programacion legit\A repos con permisos\SFML-Research\x64\Debug\SFML-study.exe

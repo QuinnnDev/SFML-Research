@@ -40,7 +40,7 @@ void Map::Draw(Renderer& renderer)
 	for (const auto& column : grid)
 	{
 		int y = 0;
-		for (auto& cell : column)
+		for (const auto& cell : column)
 		{
 			if (cell)
 			{
