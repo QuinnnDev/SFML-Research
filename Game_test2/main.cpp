@@ -21,13 +21,13 @@ int main()
 
     sf::Clock deltaClock;
 
-    Camera camara(5.0f);
+    Camera camara(50.0f);
 
     Resources resources;
 
     Renderer renderer(window);
 
-    window.setFramerateLimit(75);
+    //window.setFramerateLimit(75);
 
     ///inicializar entidades
 
@@ -58,7 +58,7 @@ int main()
 
         }
 
-        window.setView(camara.getView(window.getSize(),sf::Vector2f(0,0) ) );
+        window.setView(camara.getView(window.getSize(), sf::Vector2f(30.0f, 30.0f)) );
 
         Update(deltaTime);
 

@@ -1,6 +1,5 @@
 #pragma once
 
-#include <unordered_map>
 #include <vector>
 #include "SFML/Graphics.hpp"
 #include <string>
@@ -11,13 +10,13 @@ static class Resources
 public:
 
 
-	bool addElement(std::string path);
-	int getPosition(std::string path);
-	std::string getPath(int i);
-	sf::Texture getTexture(std::string path);
-	int getSize();
+	static bool addElement(std::string path);
+	static int getPosition(std::string path);
+	static std::string getPath(int i);
+	static sf::Texture getTexture(std::string path);
+	static int getSize();
 
-	std::string addPrefix(std::string filename);
+	static std::string addPrefix(std::string filename);
 
 
 	static std::vector<std::string> texturePath;

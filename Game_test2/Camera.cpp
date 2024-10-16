@@ -8,7 +8,7 @@ Camera::Camera(float zoomLevel)
 
 sf::View Camera::getView(sf::Vector2u windowSize, sf::Vector2f target)
 {
-	std::cout << target.x << " and " << target.y << std::endl;
+	
 	float aspect = (float)windowSize.x / (float)windowSize.y;
 	sf::Vector2f size;
 

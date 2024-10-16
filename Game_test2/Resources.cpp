@@ -12,7 +12,7 @@ bool Resources::addElement(std::string path)
 	
 	if (!temp.loadFromFile(path)) {
 
-		std::cout <<"a "<< path << std::endl;
+		std::cout <<"path not accepted: "<< path << std::endl;
 		std::cout << "Texture couldn't be loaded" << std::endl;
 		return false;
 	}
@@ -31,7 +31,6 @@ int Resources::getPosition(std::string path)
 
 	for (int i = 0; i < size; i++) 
 	{
-		std::cout << getPath(i) << " y " << path<<std::endl;
 
 		if (getPath(i) == path) {
 
@@ -55,6 +54,8 @@ std::string Resources::getPath(int i)
 
 sf::Texture Resources::getTexture(std::string path)
 {
+	path = addPrefix(path);
+
 	int pos = getPosition(path);
 
 	return textureKey[pos];
