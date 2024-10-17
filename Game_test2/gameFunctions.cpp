@@ -8,6 +8,9 @@ Map map;
 
 void Begin(const sf::Window& window, Resources resources)
 {
+
+	///aca deberia precargar cosas como texturas etc.
+
 	/*
 	for (auto& file : std::filesystem::directory_iterator("./Assets/textures/"))
 	{
@@ -21,20 +24,23 @@ void Begin(const sf::Window& window, Resources resources)
 
 	manuallyAddTextures(resources);
 
-	map.createCheckerboard(10, 10);
-
+	sf::Image image;
+	image.loadFromFile("./Assets/maps/map1.png");
+	map.createFromImage(image);
 
 }
 
 void Update(float deltaTime)
 {
-
+	///aca deberia cargar las interacciones y cambios de estado de elementos del juego
 
 }
 
 void Render(Renderer& renderer, Resources resources)
 {
-	
+	//aca deberia cargar todo lo que se vea en pantalla
+
+
 
 	//renderer.Draw(resources.getTexture("./Assets/textures/suspiciousBrick.png"), sf::Vector2f(), sf::Vector2f(2.0f, 2.0f));
 	map.Draw(renderer);

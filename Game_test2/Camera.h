@@ -12,6 +12,7 @@ public:
 
 private:
 	float zoomLevel;
+	sf::Vector2f _targetPos;
 
 };
 

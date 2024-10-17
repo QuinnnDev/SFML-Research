@@ -21,7 +21,9 @@ int main()
 
     sf::Clock deltaClock;
 
-    Camera camara(50.0f);
+    sf::Clock GlobalClock;
+
+    Camera camara(75.0f);
 
     Resources resources;
 
@@ -32,8 +34,6 @@ int main()
     ///inicializar entidades
 
     Begin(window, resources);
-
-
 
     ///fondo
 

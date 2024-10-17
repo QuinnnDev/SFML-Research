@@ -1,0 +1,12 @@
+﻿  Map.cpp
+C:\Users\Quinn\Downloads\Programacion legit\A repos con permisos\SFML-Research\Game_test2\Resources.h(8,14): warning C4091: 'static ': se ha omitido a la izquierda de 'Resources' cuando no hay ninguna variable declarada
+  (compilando archivo de origen "Map.cpp")
+  
+C:\Users\Quinn\Downloads\Programacion legit\A repos con permisos\SFML-Research\Game_test2\Map.cpp(49,40): warning C4267: 'argumento': conversión de 'size_t' a 'unsigned int'; posible pérdida de datos
+C:\Users\Quinn\Downloads\Programacion legit\A repos con permisos\SFML-Research\Game_test2\Map.cpp(49,37): warning C4267: 'argumento': conversión de 'size_t' a 'unsigned int'; posible pérdida de datos
+  Generando código
+  3 of 338 functions ( 0.9%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    0 functions had inline decision re-evaluated but remain unchanged
+  Generación de código finalizada
+  Game_test2.vcxproj -> C:\Users\Quinn\Downloads\Programacion legit\A repos con permisos\SFML-Research\x64\Release\SFML-study.exe

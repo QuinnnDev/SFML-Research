@@ -15,7 +15,7 @@ void Map::createCheckerboard(size_t width, size_t height)
 
 	grid = std::vector<std::vector<int>>(width, std::vector<int>(height, 0));
 
-	int last = 0;
+	bool last = 0;
 
 	for (auto& column : grid)
 	{
@@ -32,6 +32,29 @@ void Map::createCheckerboard(size_t width, size_t height)
 
 	}
 	
+}
+
+void Map::createFromImage(const sf::Image image)
+{
+	grid.clear();
+
+	grid = std::vector<std::vector<int>>(image.getSize().x, std::vector<int>(image.getSize().y, 0));
+
+	for (size_t x = 0; x < grid.size(); x++)
+	{
+
+		for (size_t y = 0; y < grid[x].size(); y++)
+		{
+
+			sf::Color color = image.getPixel(x, y);
+			if (color.r == sf::Color::Black.r)
+				grid[x][y] = 1;
+
+
+		}
+
+	}
+
 }
 
 void Map::Draw(Renderer& renderer)
@@ -57,3 +80,4 @@ void Map::Draw(Renderer& renderer)
 	}
 
 }
+

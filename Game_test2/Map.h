@@ -3,6 +3,8 @@
 #include <vector>
 #include "Renderer.h"
 #include "Resources.h"
+#include "SFML/Graphics.hpp"
+
 class Map
 {
 public:
@@ -12,8 +14,9 @@ public:
 	void createCheckerboard(size_t width, size_t height);
 
 	void Draw(Renderer& renderer);
+	void createFromImage(const sf::Image image);
 
-
+public:
 	std::vector<std::vector<int>> grid;
 	float _cellSize;
 
