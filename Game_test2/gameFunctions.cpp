@@ -1,7 +1,6 @@
 
 #include "gameFunctions.h"
 
-#include <filesystem>
 
 Map map;
 
@@ -33,6 +32,8 @@ void Begin(const sf::Window& window, Resources resources)
 void Update(float deltaTime)
 {
 	///aca deberia cargar las interacciones y cambios de estado de elementos del juego
+
+	
 
 }
 

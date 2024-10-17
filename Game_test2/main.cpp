@@ -4,6 +4,7 @@
 #include "Camera.h"
 #include "Renderer.h"
 #include "Resources.h"
+#include "Player.h"
 
 
 int main()
@@ -19,11 +20,10 @@ int main()
     ///inicializar sistemas
     sf::Event evento;
 
-    sf::Clock deltaClock;
 
     sf::Clock GlobalClock;
 
-    Camera camara(75.0f);
+    Camera camara(20.0f);
 
     Resources resources;
 
@@ -35,6 +35,30 @@ int main()
 
     Begin(window, resources);
 
+
+    sf::RectangleShape cube1(sf::Vector2f(15.0f, 15.0f));
+    sf::RectangleShape cube2(sf::Vector2f(10.0f, 12.0f));
+    sf::RectangleShape cube3(sf::Vector2f(6.0f, 10.0f));
+
+    cube1.setPosition(sf::Vector2f(15.0f, 0.0f));
+    cube1.setFillColor(sf::Color::Yellow);
+    cube2.setPosition(sf::Vector2f(10.0f, 0.0f));
+    cube2.setFillColor(sf::Color::Yellow);
+    cube3.setPosition(sf::Vector2f(6.0f, 0.0f));
+    cube3.setFillColor(sf::Color::Yellow);
+
+
+
+    sf::Texture playerTexture;
+    playerTexture.loadFromFile("./Assets/sprites/Shujinko.png");
+
+
+    Player akasan(&playerTexture,sf::Vector2u(4,6), 0.3f,  10.0f);
+
+
+    float deltaTime = 0.0f;
+
+    sf::Clock deltaClock;
     ///fondo
 
 
@@ -44,7 +68,7 @@ int main()
     
     while(window.isOpen())
     {
-        float deltaTime = deltaClock.restart().asSeconds();
+        deltaTime = deltaClock.restart().asSeconds();
         
 
 
@@ -58,15 +82,23 @@ int main()
 
         }
 
-        window.setView(camara.getView(window.getSize(), sf::Vector2f(30.0f, 30.0f)) );
+        window.setView(camara.getView(window.getSize(), akasan.getBody().getPosition()));
 
         Update(deltaTime);
+        akasan.Update(deltaTime);
+
 
         window.clear(sf::Color::Color(i,i,i,255));
 
         ///draw
 
-        Render(renderer, resources);
+        window.draw(cube1);
+        window.draw(cube2);
+        window.draw(cube3);
+
+        akasan.Draw(window);
+
+        //Render(renderer, resources);
 
 
         window.display();
