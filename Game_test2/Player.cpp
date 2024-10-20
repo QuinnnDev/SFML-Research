@@ -115,21 +115,9 @@ void Player::newMagicAttack(sf::Vector2f mousePos)
 			std::cout << "ERROR" << std::endl;
 			exit(-1);
 		}
-		///========================================================================
 
-		std::cout << "mouse pos: " << mousePos.x << " " << mousePos.y << std::endl;
 
-		mousePos = mousePos - sf::Vector2f(window.getSize() /2u) ;
-		mousePos = mousePos / 45.0f;
-		mousePos = mousePos + body.getPosition();
-
-		//mousePos = (mousePos /10.0f) + body.getPosition() - (sf::Vector2f(window.getSize())) / 2.0f;
-		
-		std::cout << "mouse pos + player: " << mousePos.x << " " << mousePos.y << std::endl;
-
-		///========================================================================
-
-		MagicAttack attack(&MagicTexture, sf::Vector2u(6, 24), 0.1f, mousePos);
+		MagicAttack attack(&MagicTexture, sf::Vector2u(6, 24), 0.05f, mousePos);
 
 		attacks.push_back(attack);
 

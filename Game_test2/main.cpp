@@ -35,6 +35,9 @@ int main()
 
     Begin(window, resources);
 
+    sf::Vector2f mousePos; ///saca la posicion relativa al mouse en al ventana respecto al mapa,
+                           ///porque la funcion de sfml es una mrd
+
 
     sf::RectangleShape cube1(sf::Vector2f(15.0f, 15.0f));
     sf::RectangleShape cube2(sf::Vector2f(10.0f, 12.0f));
@@ -90,9 +93,15 @@ int main()
 
         Update(deltaTime);
 
+        mousePos = sf::Vector2f(sf::Mouse::getPosition(window));
+
+        mousePos = (mousePos - sf::Vector2f(window.getSize() / 2u));
+        mousePos = mousePos / 45.0f;
+        mousePos = mousePos + akasan.getBody().getPosition();
+
            
         
-        akasan.Update(deltaTime, sf::Vector2f(sf::Mouse::getPosition(window)));
+        akasan.Update(deltaTime, mousePos);
 
 
         window.clear(sf::Color::Color(i,i,i,255));
