@@ -2,19 +2,25 @@
 
 #include "SFML/Graphics.hpp"
 #include "Animation.h"
+#include "MagicAttack.h"
+#include <vector>
 
 class Player
 {
 public:
 
-	Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, float speed);
+	Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, float speed, sf::RenderWindow& window);
 
-	void Update(float deltaTime);
+	void Update(float deltaTime, sf::Vector2f mousePos);
 
-	void Draw(sf::RenderWindow& window);
+	void Draw();
 
 
 	sf::RectangleShape getBody();
+
+private:
+
+	void newMagicAttack(sf::Vector2f mousePos);
 
 private:
 
@@ -24,10 +30,12 @@ private:
 	float				speed;
 	bool				faceRight;
 
-	float _accel;
-	float _speedX;
-	float _speedY;
-	float _speedCap;
+	std::vector<MagicAttack> attacks;
+	sf::Texture MagicTexture;
+	float attackCooldown;
+
+	sf::RenderWindow& window;
+
 
 };
 

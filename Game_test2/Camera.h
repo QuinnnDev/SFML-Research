@@ -10,6 +10,10 @@ public:
 
 	sf::View getView(sf::Vector2u windowSize, sf::Vector2f target);
 
+	sf::Vector2f getTargetPos() { return _targetPos; }
+	float getZoomLevel() { return zoomLevel; }
+
+
 private:
 	float zoomLevel;
 	sf::Vector2f _targetPos;

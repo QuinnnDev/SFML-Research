@@ -15,11 +15,11 @@ public:
 public:
 
 	sf::IntRect uvRect;
+	sf::Vector2u currentImage;
 
 private:
 	sf::Texture texture;
 	sf::Vector2u imageCount;
-	sf::Vector2u currentImage;
 
 	float totalTime;
 	float switchTime;

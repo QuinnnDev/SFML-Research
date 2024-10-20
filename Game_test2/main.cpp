@@ -39,6 +39,7 @@ int main()
     sf::RectangleShape cube1(sf::Vector2f(15.0f, 15.0f));
     sf::RectangleShape cube2(sf::Vector2f(10.0f, 12.0f));
     sf::RectangleShape cube3(sf::Vector2f(6.0f, 10.0f));
+    sf::CircleShape  circle1(3.0f);
 
     cube1.setPosition(sf::Vector2f(15.0f, 0.0f));
     cube1.setFillColor(sf::Color::Yellow);
@@ -46,14 +47,17 @@ int main()
     cube2.setFillColor(sf::Color::Yellow);
     cube3.setPosition(sf::Vector2f(6.0f, 0.0f));
     cube3.setFillColor(sf::Color::Yellow);
+    
+    circle1.setPosition(sf::Vector2f(0.0f, 0.0f));
+    circle1.setFillColor(sf::Color::Black);
 
 
 
     sf::Texture playerTexture;
     playerTexture.loadFromFile("./Assets/sprites/Shujinko.png");
+    
 
-
-    Player akasan(&playerTexture,sf::Vector2u(4,6), 0.3f,  10.0f);
+    Player akasan(&playerTexture,sf::Vector2u(4,6), 0.3f,  10.0f, window);
 
 
     float deltaTime = 0.0f;
@@ -85,7 +89,10 @@ int main()
         window.setView(camara.getView(window.getSize(), akasan.getBody().getPosition()));
 
         Update(deltaTime);
-        akasan.Update(deltaTime);
+
+           
+        
+        akasan.Update(deltaTime, sf::Vector2f(sf::Mouse::getPosition(window)));
 
 
         window.clear(sf::Color::Color(i,i,i,255));
@@ -95,15 +102,16 @@ int main()
         window.draw(cube1);
         window.draw(cube2);
         window.draw(cube3);
+        window.draw(circle1);
 
-        akasan.Draw(window);
+        akasan.Draw();
 
         //Render(renderer, resources);
 
 
         window.display();
 
-        std::cout<<deltaClock.getElapsedTime().asMilliseconds()<<std::endl;
+        //std::cout<<deltaClock.getElapsedTime().asMilliseconds()<<std::endl;
 
 
     }
