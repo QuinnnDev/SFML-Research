@@ -117,7 +117,7 @@ void Player::newMagicAttack(sf::Vector2f mousePos)
 		}
 
 
-		MagicAttack attack(&MagicTexture, sf::Vector2u(6, 24), 0.05f, mousePos);
+		MagicAttack attack(&MagicTexture, sf::Vector2u(6, 24), 0.1f, mousePos);
 
 		attacks.push_back(attack);
 
