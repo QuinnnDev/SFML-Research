@@ -23,7 +23,7 @@ int main()
 
     sf::Clock GlobalClock;
 
-    Camera camara(20.0f);
+    Camera camara(40.0f);
 
     Resources resources;
 
@@ -96,7 +96,11 @@ int main()
         mousePos = sf::Vector2f(sf::Mouse::getPosition(window));
 
         mousePos = (mousePos - sf::Vector2f(window.getSize() / 2u));
-        mousePos = mousePos / 45.0f;
+        mousePos = mousePos / 23.0f;    
+        /*
+        /// NI PUTA IDEA DE COMO SACAR ESTE VALOR POR EL QUE DIVIDO PERO SIGUE LA SIGUIENTE FORMULA
+         f(x) = 90/0.1x          (recomendacion, usar desmos para sacar los valores)
+        */
         mousePos = mousePos + akasan.getBody().getPosition();
 
            
