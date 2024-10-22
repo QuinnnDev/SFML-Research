@@ -34,9 +34,9 @@ void Player::Update(float deltaTime, sf::Vector2f mousePos)
 	if(attackCooldown>0.0f)
 		attackCooldown -= deltaTime;
 
-	if (sf::Mouse::isButtonPressed(sf::Mouse::Left) && attacks.size() < 5 && attackCooldown <= 0.0f){
+	if (sf::Mouse::isButtonPressed(sf::Mouse::Left) &&  attackCooldown <= 0.0f){
 
-		attackCooldown = 1.0f;
+		attackCooldown = 0.75f;
 		newMagicAttack(mousePos);
 		std::cout << "cantidad de magia: " << attacks.size() << std::endl;
 
@@ -103,6 +103,17 @@ void Player::Draw()
 sf::RectangleShape Player::getBody()
 {
 	return body;
+}
+
+Collider Player::getCollider()
+{
+	return Collider(body);
+}
+
+std::vector<MagicAttack> Player::getActiveAttacks()
+{
+
+	return std::vector<MagicAttack>(attacks);
 }
 
 void Player::newMagicAttack(sf::Vector2f mousePos)

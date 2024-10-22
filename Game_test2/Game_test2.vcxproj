@@ -138,6 +138,8 @@
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Collider.cpp" />
+    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="MagicAttack.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="gameFunctions.cpp" />
@@ -149,6 +151,8 @@
   <ItemGroup>
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="Collider.h" />
+    <ClInclude Include="Enemy.h" />
     <ClInclude Include="gameFunctions.h" />
     <ClInclude Include="MagicAttack.h" />
     <ClInclude Include="Map.h" />

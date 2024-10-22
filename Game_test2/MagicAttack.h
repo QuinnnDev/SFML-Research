@@ -2,6 +2,7 @@
 
 #include "SFML/Graphics.hpp"
 #include "Animation.h"
+#include "Collider.h"
 
 class MagicAttack
 {
@@ -16,6 +17,9 @@ public:
 
 	bool isExpired();
 
+	sf::RectangleShape getBody();
+
+	Collider getCollider();
 
 private:
 

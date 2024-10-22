@@ -15,8 +15,14 @@ Animation::Animation(sf::Texture* texture, sf::Vector2u imageCount, float switch
 
 void Animation::Update(int row, float deltaTime, bool faceRight)
 {
+	sf::Vector2u lastRow = currentImage;
+
 	currentImage.y = row;
 	totalTime += deltaTime;
+
+	if (currentImage.y != lastRow.y) {
+		currentImage.x = 0;
+	}
 
 	if (totalTime >= switchTime)
 	{

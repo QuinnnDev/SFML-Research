@@ -61,3 +61,13 @@ bool MagicAttack::isExpired()
 {
 	return expired;
 }
+
+sf::RectangleShape MagicAttack::getBody()
+{
+	return body;
+}
+
+Collider MagicAttack::getCollider()
+{
+	return Collider(body);
+}

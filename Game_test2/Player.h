@@ -3,6 +3,7 @@
 #include "SFML/Graphics.hpp"
 #include "Animation.h"
 #include "MagicAttack.h"
+#include "Collider.h"
 #include <vector>
 
 class Player
@@ -17,6 +18,11 @@ public:
 
 
 	sf::RectangleShape getBody();
+
+	Collider getCollider();
+
+	std::vector<MagicAttack> getActiveAttacks();
+
 
 private:
 

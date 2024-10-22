@@ -5,6 +5,7 @@
 #include "Renderer.h"
 #include "Resources.h"
 #include "Player.h"
+#include "Enemy.h"
 
 
 int main()
@@ -23,7 +24,7 @@ int main()
 
     sf::Clock GlobalClock;
 
-    Camera camara(40.0f);
+    Camera camara(20.0f);
 
     Resources resources;
 
@@ -41,15 +42,15 @@ int main()
 
     sf::RectangleShape cube1(sf::Vector2f(15.0f, 15.0f));
     sf::RectangleShape cube2(sf::Vector2f(10.0f, 12.0f));
-    sf::RectangleShape cube3(sf::Vector2f(6.0f, 10.0f));
+    sf::RectangleShape cube3(sf::Vector2f(6.0f, 6.0f));
     sf::CircleShape  circle1(3.0f);
 
     cube1.setPosition(sf::Vector2f(15.0f, 0.0f));
     cube1.setFillColor(sf::Color::Yellow);
     cube2.setPosition(sf::Vector2f(10.0f, 0.0f));
     cube2.setFillColor(sf::Color::Yellow);
-    cube3.setPosition(sf::Vector2f(6.0f, 0.0f));
-    cube3.setFillColor(sf::Color::Yellow);
+    cube3.setPosition(sf::Vector2f(6.0f, 10.0f));
+    cube3.setFillColor(sf::Color::Red);
     
     circle1.setPosition(sf::Vector2f(0.0f, 0.0f));
     circle1.setFillColor(sf::Color::Black);
@@ -58,9 +59,17 @@ int main()
 
     sf::Texture playerTexture;
     playerTexture.loadFromFile("./Assets/sprites/Shujinko.png");
+
+    sf::Texture enemyTexture;
+    enemyTexture.loadFromFile("./Assets/sprites/Enemy.png");
     
 
     Player akasan(&playerTexture,sf::Vector2u(4,6), 0.3f,  10.0f, window);
+
+
+    Enemy enemy(&enemyTexture,sf::Vector2u(6,8),  0.3f, window);
+
+    enemy.setPosition(sf::Vector2f(6.0f, 10.0f));
 
 
     float deltaTime = 0.0f;
@@ -96,16 +105,33 @@ int main()
         mousePos = sf::Vector2f(sf::Mouse::getPosition(window));
 
         mousePos = (mousePos - sf::Vector2f(window.getSize() / 2u));
-        mousePos = mousePos / 23.0f;    
+        mousePos = mousePos / 45.0f;    
+
         /*
-        /// NI PUTA IDEA DE COMO SACAR ESTE VALOR POR EL QUE DIVIDO PERO SIGUE LA SIGUIENTE FORMULA
-         f(x) = 90/0.1x          (recomendacion, usar desmos para sacar los valores)
+        NI PUTA IDEA DE COMO SACAR ESTE VALOR POR EL QUE DIVIDO PERO SIGUE LA SIGUIENTE FORMULA (por algun motivo)
+        x = zoomLevel iniciado en el constructor de camara
+         f(x) = 275/0.3x          (recomendacion, usar desmos graph para sacar los valores)
         */
+
         mousePos = mousePos + akasan.getBody().getPosition();
 
            
         
         akasan.Update(deltaTime, mousePos);
+        enemy.Update(deltaTime);
+
+
+        for (auto& attack : akasan.getActiveAttacks())
+        {
+            if (enemy.getCollider().checkCollision(attack.getCollider())) {
+                enemy.Dies();
+                std::cout << "LO MATASTE!!!" << std::endl;
+            }
+
+        }
+
+
+
 
 
         window.clear(sf::Color::Color(i,i,i,255));
@@ -117,6 +143,7 @@ int main()
         window.draw(cube3);
         window.draw(circle1);
 
+        enemy.Draw();
         akasan.Draw();
 
         //Render(renderer, resources);
