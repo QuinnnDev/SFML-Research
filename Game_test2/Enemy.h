@@ -12,6 +12,7 @@ public:
 
 	void Update(float deltaTime);
 
+
 	void Dies();
 
 	void Draw();
@@ -23,12 +24,18 @@ public:
 
 	Collider getCollider();
 
+	bool isAlive() { return alive; }
+
 private:
 
 	void enemyDying(float deltaTime);
 
 private:
 
+	//stats
+
+
+	//funcionalidades
 	sf::RectangleShape	body;
 	Animation			animation;
 	unsigned int		row;
@@ -42,6 +49,8 @@ private:
 
 	sf::RenderWindow& window;
 
+public:
 
+	int expGiven;
 };
 

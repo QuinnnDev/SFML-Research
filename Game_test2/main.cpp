@@ -6,6 +6,7 @@
 #include "Resources.h"
 #include "Player.h"
 #include "Enemy.h"
+#include "Interface.h"
 
 
 int main()
@@ -24,11 +25,11 @@ int main()
 
     sf::Clock GlobalClock;
 
-    Camera camara(20.0f);
+    Camera camara(75.0f);
 
     Resources resources;
 
-    Renderer renderer(window);
+    Interface interface;
 
     window.setFramerateLimit(75);
 
@@ -71,6 +72,8 @@ int main()
 
     enemy.setPosition(sf::Vector2f(6.0f, 10.0f));
 
+    sf::View currentView;
+
 
     float deltaTime = 0.0f;
 
@@ -98,14 +101,16 @@ int main()
 
         }
 
-        window.setView(camara.getView(window.getSize(), akasan.getBody().getPosition()));
+        currentView = camara.getView(window.getSize(), akasan.getBody().getPosition());
+
+        window.setView(currentView);
 
         Update(deltaTime);
 
         mousePos = sf::Vector2f(sf::Mouse::getPosition(window));
 
         mousePos = (mousePos - sf::Vector2f(window.getSize() / 2u));
-        mousePos = mousePos / 45.0f;    
+        mousePos = mousePos / 12.2f;    
 
         /*
         NI PUTA IDEA DE COMO SACAR ESTE VALOR POR EL QUE DIVIDO PERO SIGUE LA SIGUIENTE FORMULA (por algun motivo)
@@ -115,7 +120,7 @@ int main()
 
         mousePos = mousePos + akasan.getBody().getPosition();
 
-           
+        ///UPDATES  
         
         akasan.Update(deltaTime, mousePos);
         enemy.Update(deltaTime);
@@ -124,11 +129,15 @@ int main()
         for (auto& attack : akasan.getActiveAttacks())
         {
             if (enemy.getCollider().checkCollision(attack.getCollider())) {
+                bool temp = enemy.isAlive();
                 enemy.Dies();
-                std::cout << "LO MATASTE!!!" << std::endl;
+                if (temp != enemy.isAlive())
+                    akasan.expGain(enemy.expGiven);
             }
 
         }
+
+        interface.Update(akasan, currentView);
 
 
 
@@ -136,7 +145,7 @@ int main()
 
         window.clear(sf::Color::Color(i,i,i,255));
 
-        ///draw
+        ///draw entities
 
         window.draw(cube1);
         window.draw(cube2);
@@ -145,6 +154,10 @@ int main()
 
         enemy.Draw();
         akasan.Draw();
+
+        //draw interface (HUD)
+
+        interface.Draw(window);
 
         //Render(renderer, resources);
 

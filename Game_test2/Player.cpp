@@ -2,9 +2,16 @@
 #include <iostream>
 
 Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, float speed, sf::RenderWindow& window) :
-
 	animation(texture, imageCount, switchTime), window(window)
 {
+	playerLevel = 1;
+
+	playerHP = 100 + playerLevel*10;
+	playerMana = 75 + playerLevel*10;
+	playerExp = 0;
+	attackManaCost = 20 - int(playerLevel*5);
+
+
 	this->speed = speed;
 	attackCooldown = 1.0f;
 	row = 0;
@@ -36,10 +43,12 @@ void Player::Update(float deltaTime, sf::Vector2f mousePos)
 
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left) &&  attackCooldown <= 0.0f){
 
-		attackCooldown = 0.75f;
-		newMagicAttack(mousePos);
-		std::cout << "cantidad de magia: " << attacks.size() << std::endl;
-
+		if (playerMana >= attackManaCost) {
+			playerMana -= attackManaCost;
+			attackCooldown = 0.75f;
+			newMagicAttack(mousePos);
+			std::cout << "cantidad de magia: " << attacks.size() << std::endl;
+		}
 	}
 
 
@@ -47,6 +56,7 @@ void Player::Update(float deltaTime, sf::Vector2f mousePos)
 	{
 		row = 5;
 		movement = {};
+		playerMana += 5 * deltaTime;
 	}
 	else
 	{ 
@@ -63,7 +73,18 @@ void Player::Update(float deltaTime, sf::Vector2f mousePos)
 			faceRight = false;
 	}
 
+	//level up
 
+	int currentLevel = playerLevel;
+
+	if (playerExp / 100 > currentLevel) {
+		playerLevel++;
+
+		playerHP = 100 + playerLevel * 10;
+		playerMana = 75 + playerLevel * 10;
+		playerExp = 0;
+		attackManaCost = 20 - int(playerLevel * 5);
+	}
 
 	animation.Update(row, deltaTime, faceRight);
 	body.setTextureRect(animation.uvRect);

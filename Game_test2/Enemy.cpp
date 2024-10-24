@@ -4,6 +4,9 @@ Enemy::Enemy(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, sf
 
 	animation(texture, imageCount, switchTime), window(window)
 {
+	expGiven = 15;
+
+
 	dyingTimeDef = switchTime * (6.0f);
 	dyingTime = dyingTimeDef;
 	row = 0;

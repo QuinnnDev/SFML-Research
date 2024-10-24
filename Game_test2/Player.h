@@ -24,21 +24,43 @@ public:
 	std::vector<MagicAttack> getActiveAttacks();
 
 
+	///getters stats
+
+	int getLevel() { return playerLevel; }
+
+	void expGain(int enemyExp) { playerExp += enemyExp;}
+
+	int getHP() { return playerHP; }
+	int getMana() { return playerMana; }
+	int getExp() { return playerExp; }
+
+
 private:
 
 	void newMagicAttack(sf::Vector2f mousePos);
 
 private:
 
+	///stats
+
+	int				playerLevel;
+
+	int				playerHP;
+	float			playerMana;
+	int				playerExp;
+	float			speed;
+
+	float			attackCooldown;
+	float			attackManaCost;
+
+	///funcionalidades
 	sf::RectangleShape	body;
 	Animation			animation;
 	unsigned int		row;
-	float				speed;
 	bool				faceRight;
 
 	std::vector<MagicAttack> attacks;
 	sf::Texture MagicTexture;
-	float attackCooldown;
 
 	sf::RenderWindow& window;
 
