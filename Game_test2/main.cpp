@@ -25,7 +25,7 @@ int main()
 
     sf::Clock GlobalClock;
 
-    Camera camara(75.0f);
+    Camera camara(50.0f);
 
     Resources resources;
 
@@ -57,6 +57,9 @@ int main()
     circle1.setFillColor(sf::Color::Black);
 
 
+    float temporizadorSpawn = 1.0f;
+
+
 
     sf::Texture playerTexture;
     playerTexture.loadFromFile("./Assets/sprites/Shujinko.png");
@@ -65,12 +68,13 @@ int main()
     enemyTexture.loadFromFile("./Assets/sprites/Enemy.png");
     
 
-    Player akasan(&playerTexture,sf::Vector2u(4,6), 0.3f,  10.0f, window);
+    Player akasan(&playerTexture,sf::Vector2u(4,6), 0.3f,  15.0f, window);
 
+    std::vector<Enemy> enemigos;
 
-    Enemy enemy(&enemyTexture,sf::Vector2u(6,8),  0.3f, window);
+    
 
-    enemy.setPosition(sf::Vector2f(6.0f, 10.0f));
+    
 
     sf::View currentView;
 
@@ -110,7 +114,7 @@ int main()
         mousePos = sf::Vector2f(sf::Mouse::getPosition(window));
 
         mousePos = (mousePos - sf::Vector2f(window.getSize() / 2u));
-        mousePos = mousePos / 12.2f;    
+        mousePos = mousePos / 18.3f;    
 
         /*
         NI PUTA IDEA DE COMO SACAR ESTE VALOR POR EL QUE DIVIDO PERO SIGUE LA SIGUIENTE FORMULA (por algun motivo)
@@ -123,16 +127,62 @@ int main()
         ///UPDATES  
         
         akasan.Update(deltaTime, mousePos);
-        enemy.Update(deltaTime);
+        
 
 
+        ///si ataque colisiona
         for (auto& attack : akasan.getActiveAttacks())
         {
-            if (enemy.getCollider().checkCollision(attack.getCollider())) {
-                bool temp = enemy.isAlive();
-                enemy.Dies();
-                if (temp != enemy.isAlive())
-                    akasan.expGain(enemy.expGiven);
+            for (auto& enemy : enemigos)
+            {
+
+                if (enemy.getCollider().checkCollision(attack.getCollider())) {
+                    bool temp = enemy.isAlive();
+                    enemy.Dies();
+                    if (temp != enemy.isAlive())
+                        akasan.expGain(enemy.expGiven);
+                }
+            }
+
+        }
+        
+        temporizadorSpawn -= deltaTime;
+
+        //el constructor daria problemas con el id si los mato. 
+        //TODO: investigar ECS (entity component system). manejaba un sistema de id similar creo
+
+        if (temporizadorSpawn <=0)
+        {
+            Enemy enemy(&enemyTexture, sf::Vector2u(6, 8), 0.3f, 0.1f, enemigos.size(), window);
+            temporizadorSpawn = 5.0f;
+            enemigos.push_back(enemy);
+            enemigos.back().setPosition(sf::Vector2f(6.0f, 10.0f));
+
+        }
+        
+        for (auto& enemy : enemigos)
+        {
+
+            enemy.Update(deltaTime, akasan.getBody().getPosition());
+
+            for (auto& otherEnemy : enemigos)
+            {
+                if(enemy.getID() != otherEnemy.getID())
+                {
+                    if (enemy.getCollider().checkSolidCollision(otherEnemy.getCollider(), 0.25f)) {
+                    
+                    }
+                }
+                
+            }
+        }
+
+        for (auto& enemy : enemigos)
+        {
+            enemy.Update(deltaTime, akasan.getBody().getPosition());
+
+            if (enemy.getCollider().checkSolidCollision(akasan.getCollider(),0.25f)) {
+                akasan.dmgReceived(10);
             }
 
         }
@@ -152,7 +202,10 @@ int main()
         window.draw(cube3);
         window.draw(circle1);
 
-        enemy.Draw();
+        for (auto& enemy : enemigos)
+        {
+            enemy.Draw();
+        }
         akasan.Draw();
 
         //draw interface (HUD)

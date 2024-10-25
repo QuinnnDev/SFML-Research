@@ -29,6 +29,7 @@ public:
 	int getLevel() { return playerLevel; }
 
 	void expGain(int enemyExp) { playerExp += enemyExp;}
+	void dmgReceived(int enemyDmg) { playerHP -= enemyDmg;}
 
 	int getHP() { return playerHP; }
 	int getMana() { return playerMana; }

@@ -1,11 +1,13 @@
 #include "Enemy.h"
 
-Enemy::Enemy(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, sf::RenderWindow& window) :
+Enemy::Enemy(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, float speed, int id, sf::RenderWindow& window) :
 
 	animation(texture, imageCount, switchTime), window(window)
 {
 	expGiven = 15;
 
+	this->speed = speed;
+	this->id = id;
 
 	dyingTimeDef = switchTime * (6.0f);
 	dyingTime = dyingTimeDef;
@@ -23,15 +25,21 @@ Enemy::Enemy(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, sf
 
 }
 
-void Enemy::Update(float deltaTime)
+void Enemy::Update(float deltaTime, sf::Vector2f target)
 {
 
 
 	if (alive) {
+		
 		dyingTime = dyingTimeDef;
 		row = 0;
 		animation.Update(row, deltaTime, faceRight);
 		body.setTextureRect(animation.uvRect);
+
+		this->target = target;
+
+		moveTowardsTarget();
+
 	}
 	else
 	{
@@ -70,6 +78,20 @@ Collider Enemy::getCollider()
 }
 
 
+
+void Enemy::moveTowardsTarget()
+{
+	if (target.x < body.getPosition().x)
+		faceRight = false;
+	else
+		faceRight = true;
+
+	float angle = atan2(target.y - body.getPosition().y, target.x - body.getPosition().x);
+
+	this->body.move(speed * cos(angle), speed * sin(angle));
+
+
+}
 
 void Enemy::enemyDying(float deltaTime)
 {
