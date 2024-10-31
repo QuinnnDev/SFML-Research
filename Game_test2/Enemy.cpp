@@ -38,7 +38,7 @@ void Enemy::Update(float deltaTime, sf::Vector2f target)
 
 		this->target = target;
 
-		moveTowardsTarget();
+		moveTowardsTarget(deltaTime);
 
 	}
 	else
@@ -79,7 +79,7 @@ Collider Enemy::getCollider()
 
 
 
-void Enemy::moveTowardsTarget()
+void Enemy::moveTowardsTarget(float deltaTime)
 {
 	if (target.x < body.getPosition().x)
 		faceRight = false;
@@ -88,7 +88,7 @@ void Enemy::moveTowardsTarget()
 
 	float angle = atan2(target.y - body.getPosition().y, target.x - body.getPosition().x);
 
-	this->body.move(speed * cos(angle), speed * sin(angle));
+	this->body.move((speed * cos(angle)) * deltaTime, (speed  * sin(angle)) * deltaTime);
 
 
 }

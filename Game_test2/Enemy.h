@@ -31,7 +31,7 @@ public:
 
 private:
 
-	void moveTowardsTarget();
+	void moveTowardsTarget(float deltaTime);
 
 	void enemyDying(float deltaTime);
 

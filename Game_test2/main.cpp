@@ -25,7 +25,7 @@ int main()
 
     sf::Clock GlobalClock;
 
-    Camera camara(50.0f);
+    Camera camara(70.0f);
 
     Resources resources;
 
@@ -114,7 +114,7 @@ int main()
         mousePos = sf::Vector2f(sf::Mouse::getPosition(window));
 
         mousePos = (mousePos - sf::Vector2f(window.getSize() / 2u));
-        mousePos = mousePos / 18.3f;    
+        mousePos = mousePos / 13.1f;    
 
         /*
         NI PUTA IDEA DE COMO SACAR ESTE VALOR POR EL QUE DIVIDO PERO SIGUE LA SIGUIENTE FORMULA (por algun motivo)
@@ -153,7 +153,7 @@ int main()
 
         if (temporizadorSpawn <=0)
         {
-            Enemy enemy(&enemyTexture, sf::Vector2u(6, 8), 0.3f, 0.1f, enemigos.size(), window);
+            Enemy enemy(&enemyTexture, sf::Vector2u(6, 8), 0.3f, 10.0f, enemigos.size(), window);
             temporizadorSpawn = 5.0f;
             enemigos.push_back(enemy);
             enemigos.back().setPosition(sf::Vector2f(6.0f, 10.0f));
