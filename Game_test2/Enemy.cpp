@@ -1,13 +1,15 @@
 #include "Enemy.h"
 
-Enemy::Enemy(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, float speed, int id, sf::RenderWindow& window) :
+Enemy::Enemy(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, float speed, sf::RenderWindow& window) :
 
 	animation(texture, imageCount, switchTime), window(window)
 {
+	
+
 	expGiven = 15;
 
 	this->speed = speed;
-	this->id = id;
+	this->hp = 40;
 
 	dyingTimeDef = switchTime * (6.0f);
 	dyingTime = dyingTimeDef;

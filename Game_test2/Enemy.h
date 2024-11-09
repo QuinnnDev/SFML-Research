@@ -9,7 +9,7 @@ class Enemy
 {
 public:
 
-	Enemy(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, float speed, int id, sf::RenderWindow& window);
+	Enemy(sf::Texture* texture, sf::Vector2u imageCount, float switchTime, float speed, sf::RenderWindow& window);
 
 	void Update(float deltaTime, sf::Vector2f target);
 
@@ -23,11 +23,14 @@ public:
 
 	sf::RectangleShape getBody();
 
-	unsigned int getID() { return id; }
+	int const getHP() { return hp; }
+
+	void takeDmg(int dmgTaken) { hp -= dmgTaken; }
 
 	Collider getCollider();
 
-	bool isAlive() { return alive; }
+	bool const isAlive() { return alive; }
+
 
 private:
 
@@ -39,11 +42,13 @@ private:
 
 	//stats
 
+	int hp;
+
 	float speed;
 
 	//funcionalidades
 
-	unsigned int		id;
+//	unsigned int		id;
 
 	sf::Vector2f		target;
 

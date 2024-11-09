@@ -1,8 +1,7 @@
 #pragma once
 
 #include <vector>
-#include "Renderer.h"
-#include "Resources.h"
+
 #include "SFML/Graphics.hpp"
 
 class Map
@@ -13,7 +12,7 @@ public:
 
 	void createCheckerboard(size_t width, size_t height);
 
-	void Draw(Renderer& renderer);
+	//void Draw(Renderer& renderer);
 	void createFromImage(const sf::Image image);
 
 public:

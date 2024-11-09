@@ -3,6 +3,7 @@
 #include "SFML/Graphics.hpp"
 #include "Animation.h"
 #include "MagicAttack.h"
+#include "Majutsu.h"
 #include "Collider.h"
 #include <vector>
 
@@ -26,14 +27,14 @@ public:
 
 	///getters stats
 
-	int getLevel() { return playerLevel; }
+	int const getLevel() { return playerLevel; }
 
 	void expGain(int enemyExp) { playerExp += enemyExp;}
 	void dmgReceived(int enemyDmg) { playerHP -= enemyDmg;}
 
-	int getHP() { return playerHP; }
-	int getMana() { return playerMana; }
-	int getExp() { return playerExp; }
+	int const getHP() { return playerHP; }
+	int const getMana() { return playerMana; }
+	int const getExp() { return playerExp; }
 
 
 private:
@@ -47,12 +48,12 @@ private:
 	int				playerLevel;
 
 	int				playerHP;
-	float			playerMana;
+	int				playerMana;
 	int				playerExp;
 	float			speed;
 
 	float			attackCooldown;
-	float			attackManaCost;
+	int				attackManaCost;
 
 	///funcionalidades
 	sf::RectangleShape	body;
